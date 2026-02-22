@@ -1,4 +1,5 @@
 🏓 TTIC
+
 **Table Tennis Information Central** (TTIC) is your go-to web app for exploring table tennis information!
 It provides dynamic pages, organized routes, and easy access to data, images, and official product links. ⚡
 
