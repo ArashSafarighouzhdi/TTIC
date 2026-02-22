@@ -1,0 +1,57 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<main class="page-container">
+    <div class="content-box">
+        <header>
+            <h1><%= title %></h1>
+            <p><%= disclaimer %></p>
+        </header>
+
+        <% if (typeof brands !== 'undefined') { %>
+            <% brands.forEach(brand => { %>
+                <section>
+                    <h2 class="brand-company"><%= brand.name %></h2>
+                    
+                    <h3>Blades</h3>
+                    <div class="product-grid">
+                        <% brand.blades.forEach(blade => { %>
+                            <div class="card">
+                                <div class="product-image">
+                                    <img src="/images/equipment/<%= blade.id %>.webp" alt="<%= blade.name %>" loading="lazy">
+                                </div>
+                                
+                                <h4><%= blade.name %></h4>
+                                
+                                <div class="card-footer">
+                                    <span class="price"><%= blade.Price %></span>
+                                    <a href="/equipment/<%= blade.name.replace(/\s+/g, '-').toLowerCase() %>" class="btn-details">Details</a>
+                                </div>
+                            </div>
+                        <% }) %>
+                    </div>
+
+                    <h3>Rubbers</h3>
+                    <div class="product-grid">
+                        <% brand.rubbers.forEach(rubber => { %>
+                            <div class="card">
+                                <div class="product-image">
+                                    <img src="/images/equipment/<%= rubber.id %>.webp" alt="<%= rubber.name %>" loading="lazy">
+                                </div>
+
+                                <h4><%= rubber.name %></h4>
+                                
+                                <div class="card-footer">
+                                    <span class="price"><%= rubber.Price %></span>
+                                    <a href="/equipment/<%= rubber.name.replace(/\s+/g, '-').toLowerCase() %>" class="btn-details btn-red">Details</a>
+                                </div>
+                            </div>
+                        <% }) %>
+                    </div>
+                </section>
+            <% }) %>
+        <% } %>
+    </div>
+</main>
+
+<%- include('../partials/footer') %>

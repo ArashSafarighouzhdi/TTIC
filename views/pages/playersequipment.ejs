@@ -1,0 +1,55 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<main class="page-container">
+    <div class="content-box">
+        <% if (typeof player !== 'undefined' && player) { %>
+            
+            <div class="player-profile-header">
+
+                <div>
+                    <h1><%= player.name %></h1>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <section>
+                <div class="gear-grid">
+                 <% if (player.equipment) { %>
+                    <div class="gear-card">
+                        <div class="gear-label">Blade</div>
+                        <div class="gear-name"><%= player.equipment.blade %></div>
+                    </div>
+
+                    <div class="gear-card">
+                        <div class="gear-label">Forehand Rubber</div>
+                        <div class="gear-name"><%= player.equipment.forehand %></div>
+                    </div>
+
+                    <div class="gear-card">
+                        <div class="gear-label">Backhand Rubber</div>
+                        <div class="gear-name"><%= player.equipment.backhand %></div>
+                    </div>
+                 <% } else { %>
+                    <div class="gear-card" style="grid-column: 1 / -1;">
+                        <p>Equipment details are not available for this player.</p>
+                    </div>
+                <% } %>
+                </div>
+
+                <div class="action-buttons">
+                    <a href="/players" class="btn-back">Back to Players</a>
+                </div>
+            </section>
+
+        <% } else { %>
+            <div class="error-box">
+                <h2>Player not found!</h2>
+                <a href="/players">Return to List</a>
+            </div>
+        <% } %>
+    </div>
+</main>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,68 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<main class="page-container  bg-section">
+    <div class="content-box">
+        <section>
+            <h1 class="brand-name"><%= aboutData.personalInfo.name %></h1>
+            <p class="location-tag">📍 <%= aboutData.personalInfo.location %> | <%= aboutData.personalInfo.currentClub %></p>
+            <p class="bio-text"><%= aboutData.personalInfo.bio %></p>
+            
+    <div>
+            <p>For coaching and consultation :</p>
+             <a href="mailto:<%= aboutData.personalInfo.email %>" class="email-link">
+             <%= aboutData.personalInfo.email %>
+            </a>
+    </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <section>
+            <h2>Professional Experience</h2>
+            <div class="timeline">
+                <% aboutData.experience.slice().reverse().forEach(item => { %>
+                    <div class="timeline-item">
+                        <div class="timeline-year"><%= item.year %></div>
+                        <div class="timeline-info">
+                            <h3><%= item.club %></h3>
+                            <p><%= item.city %>, <%= item.country %></p>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        </section>
+
+        <section>
+            <h2 >Certifications</h2>
+            <div class="cert-grid">
+                <% aboutData.certifications.forEach(cert => { %>
+                    <div class="cert-card">
+                        <span class="cert-icon"><%= cert.type === 'Coaching' ? '📋' : '⚖️' %></span>
+                        <div>
+                            <h4><%= cert.title %></h4>
+                            <p><%= cert.organization %> (<%= cert.year %>)</p>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        </section>
+
+        <section >
+            <h2>A Glimpse of My Path</h2>
+
+            <div class="about-gallery">
+                <% aboutData.myGallery.forEach(img => { %>
+                    <div class="gallery-item">
+                        <div class="gallery-img-container">
+                            <img src="/images/about/<%= img.id %>.jpg" alt="<%= img.caption %>" >
+                        </div>
+                        <p class="gallery-caption"><%= img.caption %></p>
+                    </div>
+                <% }) %>
+            </div>
+        </section>
+    </div>
+</main>
+
+<%- include('../partials/footer') %>

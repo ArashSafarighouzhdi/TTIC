@@ -1,0 +1,48 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<main class="page-container">
+    <div class="product-detail-box">
+        <div class="product-main">
+            <div class="detail-image">
+                <img src="/images/equipment/<%= product.id %>.webp" alt="<%= product.name %>">
+            </div>
+            
+            <div class="detail-info">
+                <h1 class="product-name"><%= product.name %></h1>
+                <div class="product-price"><%= product.Price %></div>
+                
+                <ul class="spec-list">
+                    <% if(product.Speed) { %> 
+                        <li><strong>Speed:</strong> <%= product.Speed %></li> 
+                    <% } %>
+                    <% if(product.Control) { %> 
+                        <li><strong>Control:</strong> <%= product.Control %></li> 
+                    <% } %>
+                    <% if(product.Material) { %> 
+                        <li><strong>Material:</strong> <%= product.Material %></li> 
+                    <% } %>
+                    <% if(product.Hardness) { %> 
+                        <li><strong>Hardness:</strong> <%= product.Hardness %></li> 
+                    <% } %>
+                    <% if(product.Spin) { %> 
+                        <li><strong>Spin:</strong> <%= product.Spin %></li> 
+                    <% } %>
+                </ul>
+
+                <a href="<%= product.Buy %>" target="_blank" class="btn-buy">Buy Now (ttex.se)</a>
+            </div>
+        </div>
+
+        <div class="product-description">
+            <h3>Description</h3>
+            <p><%= product.Description %></p>
+        </div>
+        
+        <div class="back-action">
+            <a href="/equipment" class="btn-back">← Back to Equipment</a>
+        </div>
+    </div>
+</main>
+
+<%- include('../partials/footer') %>

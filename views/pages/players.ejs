@@ -1,0 +1,64 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<main class="page-container">
+    <div class="content-box">
+        <h1><%= menPlayers.title %></h1>
+        <p>Last Updated: <%= menPlayers.lastUpdated %></p>
+
+        <% const sections = [ 
+            { title: "Men's Singles", data: menPlayers }, 
+            { title: "Women's Singles", data: womenPlayers } 
+        ]; %>
+
+        <% sections.forEach(section => { %>
+            <section class="ranking-section">
+                <h2><%= section.title %></h2>
+                <div class="table-container">
+                    <table class="custom-table">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Photo</th>
+                                <th>Player</th>
+                                <th>Country</th>
+                                <th class="points-col">Points</th>
+                                <th>Equipment</th> </tr>
+                        </thead>
+                        <tbody>
+                            <% if (typeof section.data !== 'undefined' && section.data.items) { %>
+                                <% section.data.items.forEach(player => { %>
+                                    <tr>
+                                        <td class="rank-col">#<%= player.rank %></td>
+                                        <td class="photo-col">
+                                            <div class="player-photo-wrapper">
+                                                <img src="/images/players/<%= player.id %>.png" 
+                                                     alt="<%= player.name %>" 
+                                                     class="player-photo">
+                                            </div>
+                                        </td>
+                                        <td class="name-col">
+                                            <a href="<%= player.profileUrl %>" target="_blank"><%= player.name %></a>
+                                        </td>
+                                        <td>
+                                            <div class="flag-wrapper">
+                                                <img src="https://flagcdn.com/w40/<%= player.flag.replace('.svg', '') %>.png" class="mini-flag">
+                                                <span><%= player.country %></span>
+                                            </div>
+                                        </td>
+                                        <td class="points-col"><%= player.points.toLocaleString() %></td>
+                                        <td class="gear-col">
+                                            <a href="/players/<%= player.id %>" class="btn-gear">View Equipment</a>
+                                        </td>
+                                    </tr>
+                                <% }) %>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        <% }) %>
+    </div>
+</main>
+
+<%- include('../partials/footer') %>
